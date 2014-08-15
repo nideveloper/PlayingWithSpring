@@ -1,0 +1,34 @@
+<form action="/form" th:action="@{/form}" th:object="${person}" method="post">
+	<fieldset>
+    	<div class="form-group">
+       		<div class="container-fluid">
+	       		<h3>
+	       			User Sign Up
+	       		</h3>
+	       		<div class="row form-group">
+				 	<div class="col-md-6">
+				  		<label for="name">
+		        			Name:
+		        		</label>
+		        		<input type="text" th:class="form-control" th:field="*{name}" />
+		        		<span  th:class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+				  	</div>
+				</div>
+				<div class="row form-group">
+				  	<div class="col-md-6">
+						<label for="age">
+			            	Age:
+			            </label>  
+			            <input type="text" data-validationlabel="gfd" th:class="form-control" th:field="*{age}" />
+			            <span th:class="error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<button class="btn btn-primary" type="submit">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</form>
