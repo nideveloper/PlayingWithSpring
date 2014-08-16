@@ -11,7 +11,7 @@ import com.nideveloper.mvcTest.models.Greeting;
 @RestController
 public class GreetingController {
 
-    private static final String template = "Hello, %s!";
+   /* private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/greeting")
@@ -23,6 +23,6 @@ public class GreetingController {
     @RequestMapping("/")
     public Greeting greeting2(@RequestParam(value="name", required=false, defaultValue="World") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name+"ghjhg"));
-    }
+    }*/
     
 }
