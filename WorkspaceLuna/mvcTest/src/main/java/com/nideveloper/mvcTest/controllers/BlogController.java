@@ -28,40 +28,17 @@ public class BlogController extends WebMvcConfigurerAdapter {
         this.connectionRepository = connectionRepository;
     }
     
-	 @RequestMapping(value="/")
-	    public ModelAndView loadHomePage() {
-		 	RestTemplate restTemplate = new RestTemplate();
-		 	APIResponseContainer latestBlogPosts = restTemplate.getForObject("http://www.nideveloper.co.uk/json", APIResponseContainer.class);
-		 	List<Tweet> tweets = twitter.timelineOperations().getUserTimeline("nideveloper");
-		 
-		 	if(tweets.size()>5){
-		 		List<Tweet> fiveTweets = new ArrayList<Tweet>(5);
-		 		for(int i = 0; i< 5; i++){
-		 			fiveTweets.add(tweets.get(i));
-		 		}
-		 		tweets = fiveTweets;
-		 	}
-		 	
-	        ModelAndView mav = new ModelAndView("index");
-	        mav.addObject("latestBlogPosts", latestBlogPosts.getPosts());
-	        mav.addObject("latestTweets", tweets);
-	        return mav;
-	    }
-	
-	
+	@RequestMapping(value="/")
+    public ModelAndView loadHomePage() {
+	 	RestTemplate restTemplate = new RestTemplate();
+	 	APIResponseContainer latestBlogPosts = restTemplate.getForObject("http://www.nideveloper.co.uk/json", APIResponseContainer.class);
+	 	List<Tweet> tweets = twitter.timelineOperations().getUserTimeline("nideveloper").subList(0, 5);
 
-    /*@RequestMapping(method=RequestMethod.GET)
-    public String helloTwitter(Model model) {
-        if (connectionRepository.findPrimaryConnection(Twitter.class) == null) {
-        	TwitterProfile profile = twitter.userOperations().getUserProfile("nideveloper");
-        	
-            return "redirect:/connect/twitter";
-        }
-
-        model.addAttribute(twitter.userOperations().getUserProfile());
-        CursoredList<TwitterProfile> friends = twitter.friendOperations().getFriends();
-        model.addAttribute("friends", friends);
-        return "hello";
-    }*/
+        ModelAndView mav = new ModelAndView("index");
+        mav.addObject("latestBlogPosts", latestBlogPosts.getPosts());
+        mav.addObject("latestTweets", tweets);
+        return mav;
+    }
+	
 
 }
