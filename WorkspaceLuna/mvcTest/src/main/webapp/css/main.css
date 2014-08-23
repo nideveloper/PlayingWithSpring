@@ -7,6 +7,12 @@
 	font-weight: bold;
 }
 
+@media (min-width: 1700px) {
+	.container{
+		width: 1480px;
+	}	
+}
+
 /*
  * HTML5 Boilerplate
  *
