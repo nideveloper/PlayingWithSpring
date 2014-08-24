@@ -44,9 +44,8 @@ public class BlogController extends WebMvcConfigurerAdapter {
         return mav;
     }
 	
-	@RequestMapping(value="/Screenbuilder")
-    public ModelAndView loadScreenBuilderPage() {
-	 	List<Field> fields = new ArrayList<Field>();
+	private List<Field> getFields(){
+		List<Field> fields = new ArrayList<Field>();
 	 	
 	 	TextBox textbox = new TextBox();
 	 	textbox.setDisabled(false);
@@ -74,20 +73,36 @@ public class BlogController extends WebMvcConfigurerAdapter {
 	 	textbox3.setName("field3");
 	 	textbox3.setId("field3ID");
 	 	
+	 	TextBox textbox4 = new TextBox();
+	 	textbox4.setDisabled(true);
+	 	textbox4.setRequired(true);
+	 	textbox4.setValue("Test Value");
+	 	textbox4.setLabel("Field 4 :");
+	 	textbox4.setName("field4");
+	 	textbox4.setId("field4ID");
+	 	
+	 	TextBox textbox5 = new TextBox();
+	 	textbox5.setDisabled(false);
+	 	textbox5.setRequired(false);
+	 	textbox5.setValue("Test Value");
+	 	textbox5.setLabel("Field 5 :");
+	 	textbox5.setName("field5");
+	 	textbox5.setId("field5ID");
+	 	
 	 	RadioGroup radioGroup = new RadioGroup();
 	 	radioGroup.setLabel("Radio Group :");
 	 	radioGroup.setName("radioGroup");
 	 	
 	 	Radio radio1 = new Radio();
-	 	radio1.setLabel("Option 1");
+	 	radio1.setLabel("This is the first option");
 	 	radio1.setValue("option1");
 	 	
 	 	Radio radio2 = new Radio();
-	 	radio2.setLabel("Option 2");
+	 	radio2.setLabel("This is the second option");
 	 	radio2.setValue("option2");
 	 	
 	 	Radio radio3 = new Radio();
-	 	radio3.setLabel("Option 3");
+	 	radio3.setLabel("This is the third option");
 	 	radio3.setValue("option3");
 	 	
 	 	radioGroup.addRadioOption(radio1);
@@ -96,15 +111,23 @@ public class BlogController extends WebMvcConfigurerAdapter {
 	 	
 	 	
 	 	fields.add(textbox);
+	 	fields.add(radioGroup);
 	 	fields.add(textbox2);
 	 	fields.add(textbox3);
-	 	fields.add(radioGroup);
+	 	fields.add(textbox4);
+	 	fields.add(textbox5);
+	 	
+	 	return fields;
+	}
+	
+	@RequestMapping(value="/Screenbuilder")
+    public ModelAndView loadScreenBuilderPage() {
 
         ModelAndView mav = new ModelAndView("screenbuilder");
-        mav.addObject("screenFields", fields);
-        mav.addObject("screenFields2", fields);
+        mav.addObject("screenFields", getFields());
+        mav.addObject("screenFields2", getFields());
         mav.addObject("sectionName", "Section Name");
-        mav.addObject("section2Name", "Section 2 Name");
+        mav.addObject("section2Name", "Three Column Section, same fields");
         return mav;
     }
 }

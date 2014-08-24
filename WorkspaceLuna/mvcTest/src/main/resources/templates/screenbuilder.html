@@ -7,28 +7,41 @@
 	</head>
     <body>
     <div class="container">
-    	<section class="shaded-section">
+    	<h2>
+    		Dynamic Screenbuilder using HTML templates
+    	</h2>
+    
+	    <section class="shaded-section">
     		<header th:text="${sectionName}">
     		</header>
-    		<div class="container-fluid">
-			    <div class="row">
-			    	<div th:each="field : ${screenFields}" class="col-md-6">
-			        	<div th:include="${field.type}"></div>
-			        </div>
+		   	<div class="container-fluid">
+			    <div class="row" th:each="i : ${#numbers.sequence( 0, screenFields.size(),2)}">
+			       <div class="col-md-6" th:if="${screenFields.size() gt i}" th:with="field=${screenFields.get(i)}">
+			       		<div th:include="${field.type}"></div>
+			       </div>
+			       <div class="col-md-6" th:if="${screenFields.size() gt i+1}" th:with="field=${screenFields.get(i+1)}">
+			       		<div th:include="${field.type}"></div>
+			       </div>
 			    </div>
-		    </div>
+		    </div> 
 	    </section>
 	    
 	    <section class="shaded-section">
     		<header th:text="${section2Name}">
     		</header>
-    		<div class="container-fluid">
-			    <div class="row">
-			    	<div th:each="field : ${screenFields2}" class="col-md-6">
-			        	<div th:include="${field.type}"></div>
-			        </div>
+		   	<div class="container-fluid">
+			    <div class="row" th:each="i : ${#numbers.sequence( 0, screenFields2.size(),3)}">
+			       <div class="col-md-4" th:if="${screenFields2.size() gt i}" th:with="field=${screenFields2.get(i)}">
+			       		<div th:include="${field.type}"></div>
+			       </div>
+			       <div class="col-md-4" th:if="${screenFields2.size() gt i+1}" th:with="field=${screenFields2.get(i+1)}">
+			       		<div th:include="${field.type}"></div>
+			       </div>
+			       <div class="col-md-4" th:if="${screenFields2.size() gt i+2}" th:with="field=${screenFields2.get(i+2)}">
+			       		<div th:include="${field.type}"></div>
+			       </div>
 			    </div>
-		    </div>
+		    </div> 
 	    </section>
     </div>
     </body>
