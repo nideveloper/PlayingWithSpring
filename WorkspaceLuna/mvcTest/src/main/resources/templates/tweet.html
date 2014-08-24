@@ -1,0 +1,9 @@
+<ul class="page-list">
+    <li th:each="tweet : ${latestTweets}">
+        <blockquote>
+            <p th:text="${tweet.text}">Building a new Blog <a href="https://twitter.com/search?q=%23yolo">#yolo</a></p>
+            <small th:text="${tweet.createdAt}">01/01/2013 12:01</small>
+        </blockquote>
+    </li>
+</ul>
+            

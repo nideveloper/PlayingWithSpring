@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles/main.css" th:href="@{/css/bootstrap.css}" />
+		<link rel="stylesheet" href="styles/main.css" th:href="@{/css/bootstrap-theme.css}" />
+		<link rel="stylesheet" href="styles/main.css" th:href="@{/css/main.css}" />
+	</head>
+    <body>
+    <div class="container">
+    	<section class="shaded-section">
+    		<header th:text="${sectionName}">
+    		</header>
+    		<div class="container-fluid">
+			    <div class="row">
+			    	<div th:each="field : ${screenFields}" class="col-md-6">
+			        	<div th:include="${field.type}"></div>
+			        </div>
+			    </div>
+		    </div>
+	    </section>
+	    
+	    <section class="shaded-section">
+    		<header th:text="${section2Name}">
+    		</header>
+    		<div class="container-fluid">
+			    <div class="row">
+			    	<div th:each="field : ${screenFields2}" class="col-md-6">
+			        	<div th:include="${field.type}"></div>
+			        </div>
+			    </div>
+		    </div>
+	    </section>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+<label th:text="${field.label}">
+</label>
+<div class="radio" th:each="radio : ${field.radioOptions}">
+	<label>
+  		<input type="radio" th:name="${field.name}" th:value="${radio.value}" />
+  		<span th:text="${radio.label}" ></span>
+  	</label>
+</div>
