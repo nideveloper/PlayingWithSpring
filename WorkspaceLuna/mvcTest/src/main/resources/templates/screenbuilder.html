@@ -36,6 +36,28 @@
 	    </section>
 	    
 	    <section class="shaded-section">
+    		<header>
+    			Field width coming from object
+    		</header>
+		   	<div class="container-fluid">
+			    <div class="row" th:each="i : ${#numbers.sequence( 0, screenFields.size(),2)}">
+			       <div class="col-md-6" th:class="@{'col-md-'+${screenFields.get(i).numColumns}}" th:if="${screenFields.size() gt i}" th:with="field=${screenFields.get(i)}">
+			       		<div th:include="${field.type}"></div>
+			       </div>
+			       <div class="col-md-6" th:class="@{'col-md-'+${screenFields.get(i+1).numColumns}}" th:if="${screenFields.size() gt i+1}" th:with="field=${screenFields.get(i+1)}">
+			       		<div th:include="${field.type}"></div>
+			       </div>
+			    </div>
+			    <div class="row button-row">
+			    	<div class="col-md-12">
+			    		<button class="btn btn-warning" type="button">Save</button>
+			    		<button class="btn" type="button">Cancel</button>
+			    	</div>
+			    </div>
+		    </div> 
+	    </section>
+	    
+	    <section class="shaded-section">
     		<header th:text="${section2Name}">
     		</header>
 		   	<div class="container-fluid">

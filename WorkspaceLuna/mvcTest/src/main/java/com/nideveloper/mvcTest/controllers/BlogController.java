@@ -88,10 +88,12 @@ public class BlogController extends WebMvcConfigurerAdapter {
 	 	textbox5.setLabel("Field 5 :");
 	 	textbox5.setName("field5");
 	 	textbox5.setId("field5ID");
+	 	textbox5.setNumColumns(12);
 	 	
 	 	RadioGroup radioGroup = new RadioGroup();
 	 	radioGroup.setLabel("Radio Group :");
 	 	radioGroup.setName("radioGroup");
+	 	radioGroup.setNumColumns(12);
 	 	
 	 	Radio radio1 = new Radio();
 	 	radio1.setLabel("This is the first option");

@@ -15,6 +15,7 @@ public class Field {
 	protected String value;
 	protected Set<String> cssClasses;
 	protected String label;
+	protected Integer numColumns = 6;
 	
 	public String getType(){
 		return type;
@@ -91,6 +92,14 @@ public class Field {
 	
 	public void setName(String name){
 		this.name = name;
+	}
+	
+	public Integer getNumColumns(){
+		return numColumns;
+	}
+	
+	public void setNumColumns(Integer numColumns){
+		this.numColumns = numColumns;
 	}
 	
 	public Field(){
